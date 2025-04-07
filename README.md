@@ -86,6 +86,5 @@ VITE_API_URL=http://localhost:3000
 
 ## ✍️ Auteur
 
-Projet réalisé par **[Ibrahim OUAHABI ]** dans le cadre de l'ESGI - 5IW3.
+Projet réalisé par **[ Ibrahim OUAHABI ]** dans le cadre de l'ESGI - 5IW3.
 
-```
