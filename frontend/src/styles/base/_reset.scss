@@ -1,12 +1,12 @@
+@use '../utils/variables' as *;
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: sans-serif;
-    background-color: $gray-light;
-    color: $text-dark;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $gray-light;
+  font-family: sans-serif;
+}

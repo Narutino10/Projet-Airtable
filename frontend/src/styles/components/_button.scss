@@ -1,3 +1,6 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
 .button {
     padding: 0.5rem 1rem;
     background-color: $primary;

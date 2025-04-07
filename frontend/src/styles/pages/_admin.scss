@@ -1,3 +1,7 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+
 .admin-dashboard {
     .project-card {
       @include card;

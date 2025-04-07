@@ -1,18 +1,44 @@
-.home-projects {
-    @include card;
+.home {
+    padding: 2rem;
   
-    &__title {
-      font-weight: bold;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
     }
   
-    &__link {
-      color: $primary;
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+  
+    .project-card {
+      background: #f5f5f5;
+      padding: 1rem;
+      border-radius: 12px;
       text-decoration: none;
+      color: inherit;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+  
+      h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+  
+      p {
+        font-size: 0.95rem;
+        color: #444;
+        margin-bottom: 0.5rem;
+      }
+  
+      span {
+        font-weight: bold;
+      }
   
       &:hover {
-        text-decoration: underline;
+        transform: translateY(-5px);
       }
     }
   }

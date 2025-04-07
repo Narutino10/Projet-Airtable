@@ -1,36 +1,64 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { Project } from '../types/project';
 import { Link } from 'react-router-dom';
-import { Project } from '../types/project'; // 👈
 
 export default function Search() {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<Project[]>([]); // 👈
-  const handleSearch = () => {
-    axios.get(`http://localhost:3000/projects/search?q=${query}`).then((res) => {
+  const [results, setResults] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [searched, setSearched] = useState(false);
+
+  const handleSearch = async () => {
+    if (!query.trim()) return;
+    setLoading(true);
+    setSearched(true);
+    try {
+      const res = await axios.get(
+        `http://localhost:3000/projects/search?q=${encodeURIComponent(query)}`
+      );
       setResults(res.data);
-    });
+    } catch (err) {
+      console.error('Erreur de recherche :', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="p-4">
-      <h1 className="text-xl font-bold mb-2">Rechercher un projet</h1>
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        className="border p-2 rounded mr-2"
-      />
-      <button onClick={handleSearch} className="bg-blue-600 text-white px-4 py-2 rounded">
-        Rechercher
-      </button>
+      <h1 className="text-xl font-bold mb-4">Recherche de projets</h1>
+      <div className="flex gap-2 mb-4">
+        <input
+          type="text"
+          placeholder="Mot-clé..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="border border-gray-300 p-2 rounded w-full"
+        />
+        <button
+          onClick={handleSearch}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        >
+          Rechercher
+        </button>
+      </div>
 
-      <ul className="mt-4 space-y-2">
-        {results.map((r) => (
-          <li key={r.id}>
-            <Link to={`/project/${r.id}`} className="underline text-blue-500">
-              {r.fields?.Titre}
+      {loading && <p>Chargement...</p>}
+
+      {searched && !loading && results.length === 0 && (
+        <p>Aucun résultat trouvé.</p>
+      )}
+
+      <ul className="space-y-3">
+        {results.map((project) => (
+          <li key={project.id} className="border p-3 rounded">
+            <Link to={`/projects/${project.id}`} className="text-blue-600 font-semibold">
+              {project.fields?.Titre || 'Projet sans titre'}
             </Link>
+            <p className="text-sm text-gray-600">
+              ❤️ {project.fields?.Likes ?? 0} like(s)
+            </p>
           </li>
         ))}
       </ul>

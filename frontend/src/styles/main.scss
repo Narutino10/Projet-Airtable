@@ -1,10 +1,10 @@
-@use 'utils/variables';
-@use 'utils/mixins';
+@use './utils/variables' as *;
+@use './utils/mixins' as *;
 
-@use 'base/reset';
-@use 'layout/container';
-@use 'components/button';
+@use './base/reset';
+@use './components/button';
+@use './layout/container';
 
-@use 'pages/home';
-@use 'pages/project';
-@use 'pages/admin';
+@use './pages/admin';
+@use './pages/home';
+@use './pages/project';
