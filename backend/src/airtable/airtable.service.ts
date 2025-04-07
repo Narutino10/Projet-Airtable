@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 @Injectable()
 export class AirtableService {
@@ -9,18 +9,20 @@ export class AirtableService {
     Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
   };
 
-  async get(table: string, query = '') {
-    const url = \`\${this.baseUrl}/\${table}?\${query}\`;
-    const res = await axios.get(url, { headers: this.headers });
+  async get(table: string, query = ''): Promise<any[]> {
+    const url = `${this.baseUrl}/${table}?${query}`;
+    const res: AxiosResponse<{ records: any[] }> = await axios.get(url, {
+      headers: this.headers,
+    });
     return res.data.records;
   }
 
-  async update(table: string, id: string, fields: any) {
-    const url = \`\${this.baseUrl}/\${table}/\${id}\`;
-    const res = await axios.patch(
+  async update<T>(table: string, id: string, fields: T): Promise<any> {
+    const url = `${this.baseUrl}/${table}/${id}`;
+    const res: AxiosResponse<any> = await axios.patch(
       url,
       { fields },
-      { headers: this.headers }
+      { headers: this.headers },
     );
     return res.data;
   }

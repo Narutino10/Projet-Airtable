@@ -16,7 +16,10 @@ export class AuthService {
     const record = res.data.records[0];
     if (!record) return null;
 
-    const valid = await bcrypt.compare(password, record.fields["Mot de passe hashé"]);
+    const valid = await bcrypt.compare(
+      password,
+      record.fields['Mot de passe hashé'],
+    );
     if (!valid) return null;
 
     return this.jwtService.sign({ email });
