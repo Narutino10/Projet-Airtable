@@ -86,11 +86,6 @@ VITE_API_URL=http://localhost:3000
 
 ## ✍️ Auteur
 
-Projet réalisé par **[Ton Prénom Nom]** dans le cadre de l'ESGI - 5IW3.
+Projet réalisé par **[Ibrahim OUAHABI ]** dans le cadre de l'ESGI - 5IW3.
 
 ```
-
-Souhaites-tu maintenant :
-1. Que je te prépare le **starter backend NestJS** (avec modules `auth`, `projects`, `airtable`) ?
-2. Ou le **frontend React** avec les pages prêtes (`Home`, `ProjectDetails`, `AdminLogin`, etc.) ?
-3. Ou les deux 👀 ?
