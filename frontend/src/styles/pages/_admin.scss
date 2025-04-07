@@ -1,0 +1,16 @@
+.admin-dashboard {
+    .project-card {
+      @include card;
+      @include flex-between;
+  
+      .project-info {
+        font-weight: bold;
+      }
+  
+      .likes {
+        font-size: 0.9rem;
+        color: #888;
+      }
+    }
+  }
+  

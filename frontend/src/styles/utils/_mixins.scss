@@ -1,0 +1,13 @@
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  @mixin card {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: $border-radius;
+    background: white;
+  }
+  

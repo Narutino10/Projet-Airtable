@@ -1,0 +1,19 @@
+.home-projects {
+    @include card;
+  
+    &__title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    &__link {
+      color: $primary;
+      text-decoration: none;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
